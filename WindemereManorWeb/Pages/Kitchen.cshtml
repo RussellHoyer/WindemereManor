@@ -1,0 +1,35 @@
+﻿@page
+@using WindemereManor.DataLayer.Models
+@model KitchenModel
+@{
+    ViewData["Title"] = "Hoyer Kitchen";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hoyer Kitchen Dashboard</h1>
+    <table width="100%">
+
+        @*Column defs*@
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Added</th>
+                <th>Expires</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (FridgeItem item in Model.FridgeItems)
+        {
+            <tr>
+                <td>@item.ItemName</td>
+                <td>@item.AddedOn</td>
+                <td>@item.Expiration</td>
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+</div>

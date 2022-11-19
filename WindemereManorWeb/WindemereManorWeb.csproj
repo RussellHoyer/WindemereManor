@@ -10,4 +10,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WindemereManor.DataLayer\WindemereManor.DataLayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindemereManorWeb", "Windem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindemereManor.DataLayer", "WindemereManor.DataLayer\WindemereManor.DataLayer.csproj", "{428BBDC2-B3DA-4D8C-83D3-B08F07E64011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindemereManor.Models", "WindemereManor.Models\WindemereManor.Models.csproj", "{B0B9CE83-FE36-4412-8D9B-64727FBA81F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{428BBDC2-B3DA-4D8C-83D3-B08F07E64011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{428BBDC2-B3DA-4D8C-83D3-B08F07E64011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{428BBDC2-B3DA-4D8C-83D3-B08F07E64011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B9CE83-FE36-4412-8D9B-64727FBA81F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B9CE83-FE36-4412-8D9B-64727FBA81F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B9CE83-FE36-4412-8D9B-64727FBA81F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B9CE83-FE36-4412-8D9B-64727FBA81F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

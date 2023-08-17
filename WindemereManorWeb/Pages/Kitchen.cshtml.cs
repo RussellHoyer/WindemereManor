@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WindemereManor.DataLayer.Models;
+using WindemereManor.Models;
 
 namespace WindemereManorWeb.Pages
 {

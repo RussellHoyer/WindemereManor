@@ -1,7 +1,21 @@
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
+using WindemereManorWeb.Config;
+using WindemereManorWeb.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+var sqlBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("WindemereManorWebContext"));
+var dbSettings = builder.Configuration.GetSection("DbSettings").Get<DbSettings>();
+sqlBuilder.UserID = dbSettings.ManorUserId;
+sqlBuilder.Password = dbSettings.ManorPassWd;
+
+builder.Services.AddDbContext<WindemereManorWebContext>(options =>
+    options.UseSqlServer(sqlBuilder.ConnectionString));
 
 var app = builder.Build();
 

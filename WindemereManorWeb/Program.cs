@@ -10,9 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 var sqlBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("WindemereManorWebContext"));
+
+#if DEBUG
 var dbSettings = builder.Configuration.GetSection("DbSettings").Get<DbSettings>();
 sqlBuilder.UserID = dbSettings.ManorUserId;
 sqlBuilder.Password = dbSettings.ManorPassWd;
+#else
+sqlBuilder.IntegratedSecurity = true;
+#endif
 
 builder.Services.AddDbContext<WindemereManorWebContext>(options =>
     options.UseSqlServer(sqlBuilder.ConnectionString));

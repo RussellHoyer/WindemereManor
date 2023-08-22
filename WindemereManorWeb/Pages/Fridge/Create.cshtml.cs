@@ -12,31 +12,44 @@ namespace WindemereManorWeb.Pages.Fridge
 {
     public class CreateModel : PageModel
     {
-        private readonly WindemereManorWeb.Data.WindemereManorWebContext _context;
+        private readonly WindemereManorWebContext _context;
 
-        public CreateModel(WindemereManorWeb.Data.WindemereManorWebContext context)
+        public CreateModel(WindemereManorWebContext context)
         {
             _context = context;
+            FridgeItem = new();
         }
 
         public IActionResult OnGet()
         {
+            // Defaults
+            FridgeItem.AddedOn = DateTime.Now;
+            FridgeItem.Expiration = DateTime.Now.AddDays(7);
+
+            LocationChoices = new SelectList(new List<string>
+            {
+                "Upstairs",
+                "Downstairs"
+            });
+
             return Page();
         }
 
         [BindProperty]
         public FridgeItem FridgeItem { get; set; } = default!;
-        
+        [BindProperty]
+        public string SelectedLocation { get; set; }
+        public SelectList LocationChoices { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.FridgeItem == null || FridgeItem == null)
+            if (!ModelState.IsValid || _context.FridgeItems == null || FridgeItem == null)
             {
                 return Page();
             }
+            FridgeItem.Location = SelectedLocation;
 
-            _context.FridgeItem.Add(FridgeItem);
+            _context.FridgeItems.Add(FridgeItem);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

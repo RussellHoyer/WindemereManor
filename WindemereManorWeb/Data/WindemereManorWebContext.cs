@@ -14,6 +14,11 @@ namespace WindemereManorWeb.Data
         {
         }
 
-        public DbSet<FridgeItem> FridgeItem { get; set; } = default!;
+        public DbSet<FridgeItem> FridgeItems { get; set; } = default!;
+
+        public IQueryable<FridgeItem> GetFridgeItems(string location)
+        {
+            return FridgeItems.Where(x => x.Location == location);
+        }
     }
 }

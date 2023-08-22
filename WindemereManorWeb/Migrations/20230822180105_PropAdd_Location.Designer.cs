@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WindemereManorWeb.Data;
 
@@ -11,9 +12,11 @@ using WindemereManorWeb.Data;
 namespace WindemereManorWeb.Migrations
 {
     [DbContext(typeof(WindemereManorWebContext))]
-    partial class WindemereManorWebContextModelSnapshot : ModelSnapshot
+    [Migration("20230822180105_PropAdd_Location")]
+    partial class PropAdd_Location
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

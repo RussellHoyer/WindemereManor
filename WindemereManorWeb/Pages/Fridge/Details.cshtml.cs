@@ -23,12 +23,12 @@ namespace WindemereManorWeb.Pages.Fridge
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.FridgeItem == null)
+            if (id == null || _context.FridgeItems == null)
             {
                 return NotFound();
             }
 
-            var fridgeitem = await _context.FridgeItem.FirstOrDefaultAsync(m => m.ID == id);
+            var fridgeitem = await _context.FridgeItems.FirstOrDefaultAsync(m => m.ID == id);
             if (fridgeitem == null)
             {
                 return NotFound();

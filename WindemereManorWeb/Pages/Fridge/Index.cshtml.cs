@@ -12,20 +12,22 @@ namespace WindemereManorWeb.Pages.Fridge
 {
     public class IndexModel : PageModel
     {
-        private readonly WindemereManorWeb.Data.WindemereManorWebContext _context;
+        private readonly WindemereManorWebContext _context;
 
-        public IndexModel(WindemereManorWeb.Data.WindemereManorWebContext context)
+        public IndexModel(WindemereManorWebContext context)
         {
             _context = context;
         }
 
-        public IList<FridgeItem> FridgeItem { get;set; } = default!;
+        public IList<FridgeItem> UpstairsFridgeContents { get;set; } = default!;
+        public IList<FridgeItem> DownstairsFridgeContents { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.FridgeItem != null)
+            if (_context.FridgeItems != null)
             {
-                FridgeItem = await _context.FridgeItem.ToListAsync();
+                UpstairsFridgeContents = await _context.GetFridgeItems("Upstairs").ToListAsync();
+                DownstairsFridgeContents = await _context.GetFridgeItems("Downstairs").ToListAsync();
             }
         }
     }

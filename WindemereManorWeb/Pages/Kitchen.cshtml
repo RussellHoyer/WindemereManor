@@ -6,26 +6,83 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/tables.css" />
+    <link rel="stylesheet" href="~/css/gridTables.css" />
 </head>
 
 <div class="text-center">
     <h1 class="display-4">Hoyer Kitchen Dashboard</h1>
+</div>
+<br />
 
-    <h4>Fridge Contents</h4>
-    <table border="1">
-        <tr>
-            <th>Item</th>
-            <th>Added</th>
-            <th>Expires</th>
-        </tr>
-        @foreach (FridgeItem item in Model.FridgeItems)
-        {
+<div class="text-center">
+    <h5><a class="nav-link" asp-page="/Fridge/Index">Fridge</a></h5>
+    <h5>Meal Planner (coming soon)</h5>
+</div>
+<br />
+
+<div style="display: flex; justify-content: space-around">
+    <div class="text-center left">
+        <table>
             <tr>
-                <td>@item.ItemName</td>
-                <td>@item.AddedOn</td>
-                <td>@item.Expiration</td>
+                <th width="16%">Day</th>
+                <th width="42%">Lunch</th>
+                <th width="42%">Dinner</th>
             </tr>
-        }
-    </table>
+            <tr>
+                <td>Mon. 8/21</td>
+                <td>Pizza</td>
+                <td>Baked Tilapia w/roasted veggies & butternut squash raviolis</td>
+            </tr>
+            <tr>
+                <td>Tue. 8/22</td>
+                <td>Pizza</td>
+                <td>Dinner with Ricardo?</td>
+            </tr>
+            <tr>
+                <td>Wed. 8/23</td>
+                <td>Pizza</td>
+                <td>??</td>
+            </tr>
+            <tr>
+                <td>Thu. 8/24</td>
+                <td>Leftovers</td>
+                <td>??</td>
+            </tr>
+            <tr>
+                <td>Fri. 8/25</td>
+                <td>Leftovers</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Sat. 8/26</td>
+                <td>N/A</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Sun. 8/27</td>
+                <td>Leftovers</td>
+                <td>Takeout?</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="right">
+        <table>
+            <tr>
+                <th class ="text-center" width="100%">House Notes & Remidners</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>Recycling #'s: 1, 2, 5</li>
+                        <li>Clean microwave</li>
+                        <li>Re-organize Tupperware cabinet</li>
+                        <li>Clean Russ' Coffee Maker</li>
+                        <li>Get Upstairs toilet fixed</li>
+                        <li>Replace Kitchen Tube Lights</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

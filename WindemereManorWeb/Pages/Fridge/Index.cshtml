@@ -1,48 +1,61 @@
 ﻿@page
+@using WindemereManor.Models;
 @model WindemereManorWeb.Pages.Fridge.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hoyer Kitchen - Fridge";
 }
 
-<h1>Index</h1>
+<head>
+    <link rel="stylesheet" href="~/css/tables.css" />
+</head>
+<h1>What's in the Fridge?</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Add Fridge Item</a>
 </p>
-<table class="table">
-    <thead>
+<br />
+
+<h2>Upstairs Fridge</h2>
+<table border="1">
+    <tr>
+        <th>Item</th>
+        <th>Added</th>
+        <th>Expires</th>
+    </tr>
+    @foreach (FridgeItem item in Model.UpstairsFridgeContents)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FridgeItem[0].ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FridgeItem[0].Expiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FridgeItem[0].AddedOn)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.FridgeItem) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Expiration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddedOn)
-            </td>
+            <td>@item.ItemName</td>
+            <td>@String.Format("{0:d}", item.AddedOn)</td>
+            <td>@String.Format("{0:d}", item.Expiration)</td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
-    </tbody>
+    }
+</table>
+<br />
+
+<h2>Downstairs Fridge</h2>
+<table border="1">
+    <tr>
+        <th>Item</th>
+        <th>Added</th>
+        <th>Expires</th>
+    </tr>
+    @foreach (FridgeItem item in Model.DownstairsFridgeContents)
+    {
+        <tr>
+            <td>@item.ItemName</td>
+            <td>@String.Format("{0:d}", item.AddedOn)</td>
+            <td>@String.Format("{0:d}", item.Expiration)</td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
 </table>

@@ -24,12 +24,12 @@ namespace WindemereManorWeb.Pages.Fridge
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.FridgeItem == null)
+            if (id == null || _context.FridgeItems == null)
             {
                 return NotFound();
             }
 
-            var fridgeitem = await _context.FridgeItem.FirstOrDefaultAsync(m => m.ID == id);
+            var fridgeitem = await _context.FridgeItems.FirstOrDefaultAsync(m => m.ID == id);
 
             if (fridgeitem == null)
             {
@@ -44,16 +44,16 @@ namespace WindemereManorWeb.Pages.Fridge
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.FridgeItem == null)
+            if (id == null || _context.FridgeItems == null)
             {
                 return NotFound();
             }
-            var fridgeitem = await _context.FridgeItem.FindAsync(id);
+            var fridgeitem = await _context.FridgeItems.FindAsync(id);
 
             if (fridgeitem != null)
             {
                 FridgeItem = fridgeitem;
-                _context.FridgeItem.Remove(FridgeItem);
+                _context.FridgeItems.Remove(FridgeItem);
                 await _context.SaveChangesAsync();
             }
 

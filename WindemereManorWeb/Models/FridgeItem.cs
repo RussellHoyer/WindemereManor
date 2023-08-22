@@ -14,5 +14,6 @@ namespace WindemereManor.Models
         public string ItemName { get; set; }
         public DateTime Expiration { get; set; }
         public DateTime AddedOn { get; set; }
+        public string Location { get; set; } = "Upstairs";
     }
 }

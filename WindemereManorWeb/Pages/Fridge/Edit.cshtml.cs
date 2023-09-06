@@ -21,7 +21,11 @@ namespace WindemereManorWeb.Pages.Fridge
         }
 
         [BindProperty]
-        public FridgeItem FridgeItem { get; set; } = default!;
+        public FridgeItem FridgeItem { get; set; }
+        [BindProperty]
+        public string SelectedLocation { get; set; }
+        public SelectList LocationChoices { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,6 +33,11 @@ namespace WindemereManorWeb.Pages.Fridge
             {
                 return NotFound();
             }
+            LocationChoices = new SelectList(new List<string>
+            {
+                "Upstairs",
+                "Downstairs"
+            });
 
             var fridgeitem =  await _context.FridgeItems.FirstOrDefaultAsync(m => m.ID == id);
             if (fridgeitem == null)
